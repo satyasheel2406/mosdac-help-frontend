@@ -15,7 +15,17 @@ export default function ChatWindow() {
     setLoading(true);
 
     try {
-      const res = await fetch(`https://mosdac-help-backend.onrender.com/search?query=${encodeURIComponent(input)}`);
+      const res = await fetch(
+        `https://mosdac-help-backend.onrender.com/search?query=${encodeURIComponent(input)}`,
+        {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
+        }
+      );
+
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
 
       const data = await res.json();
 
@@ -57,6 +67,7 @@ export default function ChatWindow() {
 
       setMessages((prev) => [...prev, { text: botReply, sender: "Bot", html: true }]);
     } catch (err) {
+      console.error("🔴 Fetch error:", err); // ✅ Add this to debug
       setMessages((prev) => [...prev, { text: "⚠ Error fetching results.", sender: "Bot" }]);
     }
 
@@ -107,4 +118,3 @@ export default function ChatWindow() {
     </div>
   );
 }
-
