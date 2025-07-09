@@ -15,7 +15,7 @@ export default function ChatWindow() {
     setLoading(true);
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/search?query=${encodeURIComponent(input)}`);
+      const res = await fetch(`https://mosdac-help-backend.onrender.com/search?query=${encodeURIComponent(input)}`);
       const data = await res.json();
 
       let botReply = "";
