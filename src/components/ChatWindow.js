@@ -15,59 +15,52 @@ export default function ChatWindow() {
     setLoading(true);
 
     try {
-      const res = await fetch(
-        `https://mosdac-help-backend.onrender.com/search?query=${encodeURIComponent(input)}`,
-        {
-          method: "GET",
-          headers: {
-            "Accept": "application/json"
-          }
-        }
-      );
-
-      if (!res.ok) throw new Error(`Server error: ${res.status}`);
-
+      const res = await fetch(`https://mosdac-help-backend.onrender.com/search?query=${encodeURIComponent(input)}`);
       const data = await res.json();
+
+      if (!data) {
+        throw new Error("Empty response from backend");
+      }
 
       let botReply = "";
 
-      if (
-        data.matches.length === 0 &&
-        data.related_relations.length === 0 &&
-        data.semantic_suggestions.length === 0 &&
-        !data.llm_response
-      ) {
+      const hasMatches = Array.isArray(data.matches) && data.matches.length > 0;
+      const hasRelations = Array.isArray(data.related_relations) && data.related_relations.length > 0;
+      const hasSuggestions = Array.isArray(data.semantic_suggestions) && data.semantic_suggestions.length > 0;
+      const hasLLM = data.llm_response;
+
+      if (!hasMatches && !hasRelations && !hasSuggestions && !hasLLM) {
         botReply = "⚠ No relevant entities or relations found.";
       } else {
-        if (data.matches.length > 0) {
+        if (hasMatches) {
           botReply += `<div class="section-title">🗂 Entities Found:</div>`;
           data.matches.forEach(ent => {
             botReply += `• ${ent.text} <span class='tag blue'>${ent.label}</span><br/>`;
           });
         }
 
-        if (data.related_relations.length > 0) {
+        if (hasRelations) {
           botReply += `<div class="section-title mt-3">🔗 Relations:</div>`;
           data.related_relations.forEach(rel => {
             botReply += `• <strong>${rel.source}</strong> —[${rel.type}]→ <strong>${rel.target}</strong><br/>`;
           });
         }
 
-        if (data.semantic_suggestions.length > 0) {
+        if (hasSuggestions) {
           botReply += `<div class="section-title mt-3">💡 Did you mean:</div>`;
           data.semantic_suggestions.forEach(sug => {
             botReply += `• ${sug.text} <span class='tag yellow'>Similarity: ${sug.similarity.toFixed(2)}</span><br/>`;
           });
         }
 
-        if (data.llm_response) {
+        if (hasLLM) {
           botReply += `<div class="section-title mt-3">🤖 AI Answer:</div>${data.llm_response}`;
         }
       }
 
       setMessages((prev) => [...prev, { text: botReply, sender: "Bot", html: true }]);
     } catch (err) {
-      console.error("🔴 Fetch error:", err); // ✅ Add this to debug
+      console.error("Fetch error:", err);
       setMessages((prev) => [...prev, { text: "⚠ Error fetching results.", sender: "Bot" }]);
     }
 
