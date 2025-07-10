@@ -9,7 +9,10 @@ export default function ChatWindow() {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-
+       if (data.semantic_fallback) {
+  botReply += `<div class="section-title mt-3">📘 Semantic Answer:</div>${data.semantic_fallback.answer}<br/>
+    <span class='tag gray'>Source: ${data.semantic_fallback.source}</span>`;
+}
     const userMessage = { text: input, sender: "You" };
     setMessages((prev) => [...prev, userMessage]);
     setLoading(true);
