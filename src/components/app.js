@@ -10,6 +10,9 @@ export default function App() {
   useEffect(() => {
     document.body.classList.toggle("dark-mode", isDark);
   }, [isDark]);
+  useEffect(() => {
+  window.scrollTo(0, 0); // This forces page to load at top
+}, []);
 
   return (
     <div className={`app-wrapper ${isDark ? "dark" : ""}`}>
