@@ -1225,3 +1225,39 @@ body,
     height: 20px;
   }
 }
+
+.floating-sky-text {
+  max-width: 90vw;         /* Never exceed 90% of screen width */
+  word-wrap: break-word;   /* Allow breaking long words */
+  overflow-wrap: break-word;
+  text-align: center;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .floating-sky-text.sky-text-1,
+  .floating-sky-text.sky-text-2,
+  .floating-sky-text.sky-text-3 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin-top: 10px;
+  }
+}
+.scroll-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: bounce 2s infinite;
+}
+
+@media (max-width: 768px) {
+  .scroll-arrow {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+}
