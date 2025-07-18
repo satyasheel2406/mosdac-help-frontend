@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Hero from "./Hero";
 import ChatWindow from "./ChatWindow";
 import DarkModeToggle from "./DarkModeToggle";
+import logo from "../assets/logo.png"; // ✅ your logo file
 import "../index.css";
 
 export default function App() {
@@ -17,6 +18,9 @@ export default function App() {
   return (
     <div className={`app-wrapper ${isDark ? "dark" : ""}`}>
       <header className="app-header">
+           <div className="header-logo-wrapper">
+          <img src={logo} alt="Team Logo" className="team-logo" />
+        </div>
         <DarkModeToggle isDark={isDark} toggleDark={() => setIsDark(!isDark)} />
       </header>
 

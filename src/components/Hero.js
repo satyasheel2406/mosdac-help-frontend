@@ -28,8 +28,8 @@ const Hero = () => {
 
       <div className="hero-content">
         <h1 className="hero-title">MOSDAC AI Help Bot</h1>
-        <p className="hero-tagline">Ask about INSAT satellites, products, and space data – in plain English.</p>
-        <p className="scroll-hint">👇 Scroll down to chat with the AI Bot</p>
+        <p className="hero-tagline">WELCOME ASTRONAUTS 👨‍🚀</p>
+       
       </div>
     </div>
   );
