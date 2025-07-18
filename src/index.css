@@ -1172,3 +1172,56 @@ body,
     height: 18px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-content {
+    bottom: 10%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    line-height: 1.3;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .floating-sky-text {
+    position: relative;
+    font-size: 0.8rem;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .moon {
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .scroll-hint-box {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    text-align: center;
+    margin: 0 auto;
+    width: fit-content;
+    display: block;
+  }
+
+  .scroll-arrow {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .scroll-arrow span {
+    width: 20px;
+    height: 20px;
+  }
+}
