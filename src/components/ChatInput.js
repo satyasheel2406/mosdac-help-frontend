@@ -5,21 +5,24 @@ function ChatInput({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim() === "") return;
+    if (!query.trim()) return;
     onSearch(query);
     setQuery('');
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px' }}>
+    <form className="chat-input-bar" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Ask about satellites, products..."
+        placeholder="Ask your question..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{ flex: 1, padding: '8px' }}
+        className="chat-input"
+        aria-label="Chat Input"
       />
-      <button type="submit">Send</button>
+      <button type="submit" className="chat-send-btn" aria-label="Send Message">
+        🚀
+      </button>
     </form>
   );
 }
