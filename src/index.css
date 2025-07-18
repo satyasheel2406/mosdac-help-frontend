@@ -801,6 +801,11 @@ body,
   left: 5%;
   animation-delay: 2s;
 }
+.sky-text-4 {
+  top: 65%;
+ right: 5%;
+  animation-delay: 2s;
+}
 
 /* Float Animation */
 @keyframes floatUpDown {

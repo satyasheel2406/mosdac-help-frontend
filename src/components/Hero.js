@@ -16,6 +16,8 @@ const Hero = () => {
         <div className="floating-sky-text sky-text-1">✨ Explore the Unknown</div>
         <div className="floating-sky-text sky-text-2">🚀 Powered by Space Tech</div>
         <div className="floating-sky-text sky-text-3">🛰️ MOSDAC Universe Awaits</div>
+        <div className="floating-sky-text sky-text-4">🛰️ Go Ahead ! Sky is Yours</div>
+
 
         {/* ↓ Scroll Hint Box and Arrow */}
         <div className="scroll-hint-wrapper">
