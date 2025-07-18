@@ -797,8 +797,8 @@ body,
   animation-delay: 1s;
 }
 .sky-text-3 {
-  top: 28%;
-  left: 35%;
+  top: 70%;
+  left: 37%;
   animation-delay: 2s;
 }
 
@@ -948,6 +948,7 @@ body,
 .scroll-arrow {
   position: absolute;
   bottom: 40px;
+  top : 87%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -977,8 +978,8 @@ body,
 }
 .scroll-hint-box {
   position: absolute;
-  bottom: 80px;
-  left: 31%;
+  bottom: 110px;
+  left: 33%;
   transform: translateX(-50%);
  font-size: 1.4rem;
   font-weight: 800;
